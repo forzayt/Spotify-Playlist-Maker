@@ -117,7 +117,7 @@ try:
             user=user_id,
             name=PLAYLIST_NAME,
             public=True,
-            description="Auto-filled slowed + reverb songs"
+            description="Slowed + reverb songs across the spotify server Auto-Updates Daily!"
         )
         playlist_id = new_playlist["id"]
         print(f"✅ Created new playlist: {PLAYLIST_NAME}")
