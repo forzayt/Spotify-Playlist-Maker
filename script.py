@@ -66,8 +66,7 @@ instrumental_keywords = [
     "sample", "remix beat", "hard beat", "fire beat", "crazy beat", "insane beat"
 ]
 
-try:
-    # Step 1: Auth
+def main():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
@@ -75,18 +74,14 @@ try:
         scope=SCOPE
     ))
 
-    # Step 2: Get current user
     user_id = sp.current_user()["id"]
 
-    # Step 3: Check for existing playlist
     playlist_id = None
     playlists = sp.current_user_playlists(limit=50)["items"]
     for playlist in playlists:
         if playlist["name"] == PLAYLIST_NAME:
             playlist_id = playlist["id"]
             break
-
-    # Step 4: Create playlist if not found
     if not playlist_id:
         new_playlist = sp.user_playlist_create(
             user=user_id,
@@ -97,72 +92,80 @@ try:
         playlist_id = new_playlist["id"]
         print(f"✅ Created new playlist: {PLAYLIST_NAME}")
 
-    # Step 5: Search for slowed + reverb songs
-    search_query = "slowed reverb"
-    search_limit = 50
+    return sp, playlist_id
 
-    results = sp.search(q=search_query, type="track", limit=search_limit)
-    tracks = results["tracks"]["items"]
+def run_loop(sp, playlist_id):
+    try:
+        while True:
+            print("🔄 Starting a new search cycle...")
 
-    # Step 6: Filter & collect track IDs
-    track_ids = []
-    filtered_count = 0
-    instrumental_filtered = 0
-    
-    for track in tracks:
-        name = track["name"].lower()
-        album = track["album"]["name"].lower()
-        artist_names = " ".join([artist["name"].lower() for artist in track["artists"]])
-        
-        # Check for forbidden keywords in name, album, and artist
-        if any(bad in name for bad in forbidden_keywords):
-            filtered_count += 1
-            continue
-        if any(bad in album for bad in forbidden_keywords):
-            filtered_count += 1
-            continue
-        if any(bad in artist_names for bad in forbidden_keywords):
-            filtered_count += 1
-            continue
-            
-        # Check for instrumental keywords
-        if any(instr in name for instr in instrumental_keywords):
-            instrumental_filtered += 1
-            continue
-        if any(instr in album for instr in instrumental_keywords):
-            instrumental_filtered += 1
-            continue
-        if any(instr in artist_names for instr in instrumental_keywords):
-            instrumental_filtered += 1
-            continue
-            
-        # Additional check: if track has no explicit lyrics indicator and contains music-only terms
-        if "music" in name and ("only" in name or "version" in name):
-            instrumental_filtered += 1
-            continue
-            
-        # Check track duration - instrumental phonk tracks are often shorter (under 2 minutes)
-        duration_ms = track.get("duration_ms", 0)
-        if duration_ms > 0 and duration_ms < 120000:  # Less than 2 minutes
-            # If it's short AND contains any suspicious terms, likely instrumental
-            suspicious_terms = ["beat", "type", "style", "(prod", "[prod", "freestyle", "loop"]
-            if any(term in name for term in suspicious_terms):
-                instrumental_filtered += 1
-                continue
-                
-        track_ids.append(track["id"])
+            search_query = "slowed reverb"
+            search_limit = 50
 
-    # Step 7: Add to playlist
-    if track_ids:
-        sp.playlist_add_items(playlist_id, track_ids)
-        print(f"✅ Added {len(track_ids)} filtered slowed + reverb songs to your playlist!")
-        print(f"📊 Filtered out {filtered_count} tracks with forbidden keywords")
-        print(f"🎵 Filtered out {instrumental_filtered} instrumental tracks")
-        print(f"📈 Total tracks processed: {len(tracks)}")
-    else:
-        print("⚠️ No slowed + reverb tracks passed the filter.")
-        print(f"📊 Filtered out {filtered_count} tracks with forbidden keywords")
-        print(f"🎵 Filtered out {instrumental_filtered} instrumental tracks")
+            results = sp.search(q=search_query, type="track", limit=search_limit)
+            tracks = results["tracks"]["items"]
 
-except (SpotifyException, requests.exceptions.RequestException) as e:
-    print(f"❌ Error occurred: {e}")
+            track_ids = []
+            filtered_count = 0
+            instrumental_filtered = 0
+
+            for track in tracks:
+                name = track["name"].lower()
+                album = track["album"]["name"].lower()
+                artist_names = " ".join([artist["name"].lower() for artist in track["artists"]])
+
+                if any(bad in name for bad in forbidden_keywords):
+                    filtered_count += 1
+                    continue
+                if any(bad in album for bad in forbidden_keywords):
+                    filtered_count += 1
+                    continue
+                if any(bad in artist_names for bad in forbidden_keywords):
+                    filtered_count += 1
+                    continue
+
+                if any(instr in name for instr in instrumental_keywords):
+                    instrumental_filtered += 1
+                    continue
+                if any(instr in album for instr in instrumental_keywords):
+                    instrumental_filtered += 1
+                    continue
+                if any(instr in artist_names for instr in instrumental_keywords):
+                    instrumental_filtered += 1
+                    continue
+
+                if "music" in name and ("only" in name or "version" in name):
+                    instrumental_filtered += 1
+                    continue
+
+                duration_ms = track.get("duration_ms", 0)
+                if duration_ms > 0 and duration_ms < 120000:
+                    suspicious_terms = ["beat", "type", "style", "(prod", "[prod", "freestyle", "loop"]
+                    if any(term in name for term in suspicious_terms):
+                        instrumental_filtered += 1
+                        continue
+
+                track_ids.append(track["id"])
+
+            if track_ids:
+                sp.playlist_add_items(playlist_id, track_ids)
+                print(f"✅ Added {len(track_ids)} filtered slowed + reverb songs to your playlist!")
+            else:
+                print("⚠️ No slowed + reverb tracks passed the filter this cycle.")
+
+            print(f"📊 Filtered out {filtered_count} tracks with forbidden keywords")
+            print(f"🎵 Filtered out {instrumental_filtered} instrumental tracks")
+            print(f"📈 Total tracks processed this cycle: {len(tracks)}")
+            print()  # Just a newline for readability
+
+    except KeyboardInterrupt:
+        print("\n🛑 Loop stopped manually by user. Exiting gracefully...")
+
+    except (SpotifyException, requests.exceptions.RequestException) as e:
+        print(f"❌ Error occurred: {e}")
+        print("Retrying immediately...")
+        run_loop(sp, playlist_id)  # Restart loop after error
+
+if __name__ == "__main__":
+    sp, playlist_id = main()
+    run_loop(sp, playlist_id)
