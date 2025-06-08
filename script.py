@@ -87,7 +87,7 @@ def main():
             user=user_id,
             name=PLAYLIST_NAME,
             public=True,
-            description="Slowed + reverb songs across the spotify server Auto-Updates Daily!"
+            description="Slowed + reverb songs across the spotify servers Auto-Updates Every 1 Hr !"
         )
         playlist_id = new_playlist["id"]
         print(f"✅ Created new playlist: {PLAYLIST_NAME}")
