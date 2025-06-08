@@ -22,10 +22,10 @@ forbidden_keywords = [
     "jazz", "blues", "soul", "R&B", "disco", "funk rock", "boogie", "electro funk", "go-go",
     "avant-funk", "nu-funk", "synth-funk", "synthwave", "retrowave", "chiptune", "8-bit",
     "video game music", "anime music", "soundtrack", "musical theatre", "show tunes",
-    "easy listening", "lounge", "bossa nova", "flamenco", "tango", "samba", "cumbia",
-    "merengue", "mambo", "cha-cha", "bhangra", "kirtan", "qawwali", "sufi", "ghazal",
+    "easy listening", "lounge", "flamenco", "tango", "samba", "cumbia",
+    "mambo", "cha-cha", "bhangra", "kirtan", "qawwali", "sufi", "ghazal",
     "devotional", "chant", "mantra", "new age", "spiritual", "meditation", "yoga music",
-    "ambient", "nature sounds", "white noise", "pink noise", "brown noise", "sleep music",
+    "nature sounds", "white noise", "pink noise", "brown noise", "sleep music",
     "study music", "focus music", "relaxation music", "healing music", "sound therapy",
     "brainwave entrainment", "isochronic tones", "binaural beats", "solfeggio frequencies",
     "432 Hz", "528 Hz", "639 Hz", "741 Hz", "852 Hz", "963 Hz", "delta waves", "theta waves",
@@ -34,62 +34,37 @@ forbidden_keywords = [
     "esoteric", "mysticism", "alchemy", "alchemy music", "hermetic", "theosophy", "gnostic",
     "occult rock", "psychedelic rock", "stoner rock", "doom metal", "sludge metal", "black metal",
     "death metal", "thrash metal", "power metal", "speed metal", "prog metal", "metalcore",
-    "post-metal", "doom metal", "sludge metal", "grindcore", "hardcore punk", "crust punk",
-    "anarcho-punk", "oi!", "ska punk", "street punk", "pop punk", "emo pop", "screamo",
-    "post-hardcore", "mathcore", "noise rock", "experimental rock", "avant-garde metal",
-    "industrial metal", "gothic metal", "deathcore", "metalcore", "hardcore", "post-hardcore",
-    "grindcore", "powerviolence", "doomcore", "sludgecore", "deathgrind", "crustgrind",
-    "pornogrind", "noisegrind", "goregrind", "cybergrind", "mathcore", "post-metal",
-    "sludge metal", "doom metal", "stoner metal", "blackened death metal", "blackened doom",
-    "blackened crust", "blackened grind", "blackened hardcore", "blackened thrash",
-    "blackened speed metal", "blackened sludge", "blackened prog", "blackened folk",
-    "blackened ambient", "blackened noise", "blackened experimental", "blackened avant-garde",
-    "blackened industrial", "blackened gothic", "blackened electronic", "blackened synth",
-    "blackened pop", "blackened rap", "blackened hip hop", "blackened jazz", "blackened blues",
-    "blackened soul", "blackened R&B", "blackened disco", "blackened funk", "blackened reggae",
-    "blackened ska", "blackened dub", "blackened bossa nova", "blackened salsa", "blackened tango",
-    "blackened cumbia", "blackened merengue", "blackened mambo", "blackened cha-cha", "blackened bhangra",
-    "blackened kirtan", "blackened qawwali", "blackened sufi", "blackened ghazal", "blackened devotional",
-    "blackened chant", "blackened mantra", "blackened new age", "blackened spiritual", "blackened meditation",
-    "blackened yoga music", "blackened ambient", "blackened nature sounds", "blackened white noise",
-    "blackened pink noise", "blackened brown noise", "blackened sleep music", "blackened study music",
-    "blackened focus music", "blackened relaxation music", "blackened healing music", "blackened sound therapy",
-    "blackened brainwave entrainment", "blackened isochronic tones", "blackened binaural beats",
-    "blackened solfeggio frequencies", "blackened 432 Hz", "blackened 528 Hz", "blackened 639 Hz",
-    "blackened 741 Hz", "blackened 852 Hz", "blackened 963 Hz", "blackened delta waves", "blackened theta waves",
-    "blackened alpha waves", "blackened beta waves", "blackened gamma waves", "blackened lucid dreaming",
-    "blackened out-of-body experience", "blackened astral projection", "blackened remote viewing",
-    "blackened telepathy", "blackened psychic", "blackened paranormal", "blackened occult", "blackened esoteric",
-    "blackened mysticism", "blackened alchemy", "blackened hermetic", "blackened theosophy", "blackened gnostic",
-    "blackened occult rock", "blackened psychedelic rock", "blackened stoner rock", "blackened doom metal",
-    "blackened sludge metal", "blackened black metal", "blackened death metal", "blackened thrash metal",
-    "blackened power metal", "blackened speed metal", "blackened prog metal", "blackened metalcore",
-    "blackened post-metal", "blackened doom metal", "blackened sludge metal", "blackened grindcore",
-    "blackened hardcore punk", "blackened crust punk", "blackened anarcho-punk", "blackened oi!", "blackened ska punk",
-    "blackened street punk", "blackened pop punk", "blackened emo pop", "blackened screamo", "blackened post-hardcore",
-    "blackened mathcore", "blackened noise rock", "blackened experimental rock", "blackened avant-garde metal",
-    "blackened industrial metal", "blackened gothic metal", "blackened deathcore", "blackened metalcore",
-    "blackened hardcore", "blackened post-hardcore", "blackened grindcore", "blackened powerviolence",
-    "blackened doomcore", "blackened sludgecore", "blackened deathgrind", "blackened crustgrind", "blackened pornogrind",
-    "blackened noisegrind", "blackened goregrind", "blackened cybergrind", "blackened mathcore", "blackened post-metal",
-    "blackened sludge metal", "blackened doom metal", "blackened stoner metal", "blackened blackened death metal",
-    "blackened blackened thrash", "blackened blackened speed metal", "blackened blackened sludge", "blackened blackened prog",
-    "blackened blackened folk", "blackened blackened ambient", "blackened blackened noise", "blackened blackened experimental",
-    "blackened blackened avant-garde", "blackened blackened industrial", "blackened blackened gothic",
-    "blackened blackened electronic", "blackened blackened synth", "blackened blackened pop", "blackened blackened rap",
-    "blackened blackened hip hop", "blackened blackened jazz", "blackened blackened blues", "blackened blackened soul",
-    "blackened blackened R&B", "blackened blackened disco", "blackened blackened funk", "blackened blackened reggae",
-    "blackened blackened ska", "blackened blackened dub", "blackened blackened bossa nova", "blackened blackened salsa",
-    "blackened blackened tango", "blackened blackened cumbia", "blackened blackened merengue", "blackened blackened mambo",
-    "blackened blackened cha-cha", "blackened blackened bhangra", "blackened blackened kirtan", "blackened blackened qawwali",
-    "blackened blackened sufi", "blackened blackened ghazal", "blackened blackened devotional", "blackened blackened chant",
-    "blackened blackened mantra", "blackened blackened new age", "blackened blackened spiritual", "blackened blackened meditation",
-    "blackened blackened yoga music", "blackened blackened ambient", "blackened blackened nature sounds", "blackened blackened white noise",
-    "blackened blackened pink noise", "blackened blackened brown noise", "blackened blackened sleep music", "blackened blackened study music",
-    "blackened blackened focus music", "blackened blackened relaxation music", "blackened blackened healing music", "blackened blackened sound therapy",
-    "blackened blackened brainwave entrainment", "blackened blackened isochronic tones", "blackened blackened binaural beats",
-    "blackened blackened solfeggio frequencies", "blackened blackened 432 Hz", "blackened blackened 528 Hz",
-    "blackened blackened 639 Hz", "blackened blackened 741 Hz", "blackened blackened 852 Hz", "blackened blackened 963 Hz",]
+    "post-metal", "hardcore punk", "anarcho-punk", "oi!", "ska punk", "street punk", 
+    "pop punk", "emo pop", "post-hardcore", "mathcore", "noise rock", "experimental rock", 
+    "avant-garde metal", "industrial metal", "gothic metal", "powerviolence", "doomcore", 
+    "sludgecore", "deathgrind", "crustgrind", "cybergrind", "stoner metal",
+    # Legitimate blackened subgenres only
+    "blackened death metal", "blackened doom", "blackened thrash", "blackened hardcore",
+    "blackened crust", "blackened grind", "blackened sludge", "blackened deathcore"
+]
+
+# Keywords that indicate instrumental tracks (to exclude)
+instrumental_keywords = [
+    "instrumental", "instrumentals", "karaoke", "backing track", "backing tracks",
+    "piano version", "guitar version", "acoustic version", "cover version", "cover",
+    "beat", "beats", "track", "background music", "bgm", "soundtrack", "ost",
+    "theme", "intro", "outro", "interlude", "bridge", "breakdown", "drop",
+    "piano solo", "guitar solo", "drum solo", "bass solo", "violin solo", "flute solo",
+    "orchestral", "symphony", "concerto", "prelude", "etude", "sonata", "nocturne",
+    "waltz", "minuet", "scherzo", "rondo", "fugue", "toccata", "fantasie", "rhapsody",
+    "improvisation", "jam", "live session", "studio session", "rehearsal", "practice",
+    "no vocals", "without vocals", "minus vocals", "vocal removed", "vocals removed",
+    "sing along", "singalong", "playback", "playalong", "music only", "melody only",
+    "tune", "arrangement", "orchestration", "composition", "piece", "movement",
+    "(instrumental)", "[instrumental]", "- instrumental", "instrumental -",
+    "piano cover", "guitar cover", "violin cover", "flute cover", "saxophone cover",
+    "harp cover", "cello cover", "drums cover", "bass cover", "organ cover",
+    "music box", "lullaby version", "elevator music", "hold music", "waiting music",
+    # Additional terms to catch phonk instrumentals and similar
+    "type beat", "type", "(prod", "[prod", "prod by", "produced by", "freestyle beat",
+    "rap beat", "hip hop beat", "trap beat", "phonk beat", "drill beat", "loop",
+    "sample", "remix beat", "hard beat", "fire beat", "crazy beat", "insane beat"
+]
 
 try:
     # Step 1: Auth
@@ -131,21 +106,63 @@ try:
 
     # Step 6: Filter & collect track IDs
     track_ids = []
+    filtered_count = 0
+    instrumental_filtered = 0
+    
     for track in tracks:
         name = track["name"].lower()
         album = track["album"]["name"].lower()
+        artist_names = " ".join([artist["name"].lower() for artist in track["artists"]])
+        
+        # Check for forbidden keywords in name, album, and artist
         if any(bad in name for bad in forbidden_keywords):
+            filtered_count += 1
             continue
         if any(bad in album for bad in forbidden_keywords):
+            filtered_count += 1
             continue
+        if any(bad in artist_names for bad in forbidden_keywords):
+            filtered_count += 1
+            continue
+            
+        # Check for instrumental keywords
+        if any(instr in name for instr in instrumental_keywords):
+            instrumental_filtered += 1
+            continue
+        if any(instr in album for instr in instrumental_keywords):
+            instrumental_filtered += 1
+            continue
+        if any(instr in artist_names for instr in instrumental_keywords):
+            instrumental_filtered += 1
+            continue
+            
+        # Additional check: if track has no explicit lyrics indicator and contains music-only terms
+        if "music" in name and ("only" in name or "version" in name):
+            instrumental_filtered += 1
+            continue
+            
+        # Check track duration - instrumental phonk tracks are often shorter (under 2 minutes)
+        duration_ms = track.get("duration_ms", 0)
+        if duration_ms > 0 and duration_ms < 120000:  # Less than 2 minutes
+            # If it's short AND contains any suspicious terms, likely instrumental
+            suspicious_terms = ["beat", "type", "style", "(prod", "[prod", "freestyle", "loop"]
+            if any(term in name for term in suspicious_terms):
+                instrumental_filtered += 1
+                continue
+                
         track_ids.append(track["id"])
 
     # Step 7: Add to playlist
     if track_ids:
         sp.playlist_add_items(playlist_id, track_ids)
         print(f"✅ Added {len(track_ids)} filtered slowed + reverb songs to your playlist!")
+        print(f"📊 Filtered out {filtered_count} tracks with forbidden keywords")
+        print(f"🎵 Filtered out {instrumental_filtered} instrumental tracks")
+        print(f"📈 Total tracks processed: {len(tracks)}")
     else:
         print("⚠️ No slowed + reverb tracks passed the filter.")
+        print(f"📊 Filtered out {filtered_count} tracks with forbidden keywords")
+        print(f"🎵 Filtered out {instrumental_filtered} instrumental tracks")
 
 except (SpotifyException, requests.exceptions.RequestException) as e:
     print(f"❌ Error occurred: {e}")
