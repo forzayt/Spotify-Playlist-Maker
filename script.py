@@ -8,7 +8,7 @@ CLIENT_ID = "57e7d63ff50e46058facee08174119c7"
 CLIENT_SECRET = "c8f8624cc0c245db82a065d2f8182f7c"
 REDIRECT_URI = "http://127.0.0.1:8888/callback"
 SCOPE = "playlist-modify-public"
-PLAYLIST_NAME = "Global Slowed + Reverb Playlist"
+PLAYLIST_NAME = "Slowed + Reverb Global Playlist "
 
 # List of keywords to skip
 forbidden_keywords = [
@@ -124,7 +124,7 @@ try:
 
     # Step 5: Search for slowed + reverb songs
     search_query = "slowed reverb"
-    search_limit = 100
+    search_limit = 50
 
     results = sp.search(q=search_query, type="track", limit=search_limit)
     tracks = results["tracks"]["items"]
