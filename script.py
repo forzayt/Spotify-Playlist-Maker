@@ -10,17 +10,28 @@ CLIENT_ID = "57e7d63ff50e46058facee08174119c7"
 CLIENT_SECRET = "c8f8624cc0c245db82a065d2f8182f7c"
 REDIRECT_URI = "http://127.0.0.1:8888/callback"
 SCOPE = "playlist-modify-public"
-PLAYLIST_NAME = "Slowed + Reverb Global Playlist"
+PLAYLIST_NAME = "Popular English Rap Songs Non Stop"
 
-# List of forbidden and instrumental keywords (you already have these, truncated here for brevity)
-forbidden_keywords = ["phonk", "funk", "sigma", "sped up", "nightcore", "trap", "drill", "dubstep"]
-instrumental_keywords = ["instrumental", "karaoke", "beat", "backing track", "no vocals", "type beat", "cover"]
-
-search_queries = [
-    "slowed reverb", "slowed + reverb", "slowed and reverb",
-    "reverb slowed", "slowed version", "reverb mix",
-    "slowed edit", "slowed remix", "slowed reverb audio"
+# Forbidden keywords (to filter out unwanted genres/versions)
+forbidden_keywords = [
+    "phonk", "funk", "sigma", "sped up", "nightcore",
+    "trap", "drill", "dubstep", "remix", "edit", "mix"
 ]
+
+# Instrumental-related keywords (to avoid non-vocal versions)
+instrumental_keywords = [
+    "instrumental", "karaoke", "beat", "backing track",
+    "no vocals", "type beat", "cover", "acoustic"
+]
+
+# Search queries for finding variations
+search_queries = [
+    "popular english rap songs", "english rap playlist",
+    "best rap hits", "non stop rap mix",
+    "english hip hop songs", "rap bangers",
+    "english rap hits playlist", "rap music nonstop"
+]
+
 
 def main():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
