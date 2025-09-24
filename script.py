@@ -10,28 +10,17 @@ CLIENT_ID = "57e7d63ff50e46058facee08174119c7"
 CLIENT_SECRET = "c8f8624cc0c245db82a065d2f8182f7c"
 REDIRECT_URI = "http://127.0.0.1:8888/callback"
 SCOPE = "playlist-modify-public"
-PLAYLIST_NAME = "Popular English Rap Songs Non Stop"
+PLAYLIST_NAME = "Popular Songs Non Stop"
 
-# Forbidden keywords (to filter out unwanted genres/versions)
-forbidden_keywords = [
-    "phonk", "funk", "sigma", "sped up", "nightcore",
-    "trap", "drill", "dubstep", "remix", "edit", "mix"
-]
+# No forbidden or instrumental filters
+forbidden_keywords = []
+instrumental_keywords = []
 
-# Instrumental-related keywords (to avoid non-vocal versions)
-instrumental_keywords = [
-    "instrumental", "karaoke", "beat", "backing track",
-    "no vocals", "type beat", "cover", "acoustic"
-]
-
-# Search queries for finding variations
-search_queries = [
-    "popular english rap songs", "english rap playlist",
-    "best rap hits", "non stop rap mix",
-    "english hip hop songs", "rap bangers",
-    "english rap hits playlist", "rap music nonstop"
-]
-
+# No custom search queries – placeholder to fetch everything
+search_queries = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+                  "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                  "u", "v", "w", "x", "y", "z", "0", "1", "2", "3",
+                  "4", "5", "6", "7", "8", "9"]
 
 def main():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
@@ -54,7 +43,7 @@ def main():
             user=user_id,
             name=PLAYLIST_NAME,
             public=True,
-            description="Slowed + reverb songs across the Spotify servers. Auto-Updates Every Hour!"
+            description="Best playlist on SPOTIFY __ Jesus Loves You <3 !"
         )
         playlist_id = new_playlist["id"]
         print(f"✅ Created new playlist: {PLAYLIST_NAME}")
